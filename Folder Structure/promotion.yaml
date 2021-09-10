@@ -1,20 +1,20 @@
 environments:
     dev:
-        - name: northeu
+        - zone: northeu
           priority: 1
-        - name: westeu
+        - zone: westeu
           priority: 2
     stage:
-        - name: northeu
+        - zone: northeu
           priority: 1
-        - name: westeu
+        - zone: westeu
           priority: 2
-        - name: eastus
+        - zone: eastus
           priority: 3
-        - name: westus
+        - zone: westus
           priority: 3
     prod:
-        - name: eastus
+        - zone: eastus
           priority: 3
-        - name: westus
+        - zone: westus
           priority: 3
