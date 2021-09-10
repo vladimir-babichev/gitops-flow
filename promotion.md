@@ -91,7 +91,87 @@ Same as above. Configuration file defining order of change deployment across reg
 
 * `terraform` folder in the root of the repository
 * symlink `terraform/main.tf` code from root folder to all tiers and zones
-* 
 * for every merge, pipeline will treat change as a dev change and tag with `dev-<version>`
 * on every tag apply code to respective env based on tag. On success promote to upper env by tagging `<upper_env>-<version>`
 * Given approach doesn't imply promotion gates, due to the lack of pull requests. 
+
+---
+
+## Directory structure
+
+```bash
+.
+├── dev
+│   ├── terraform
+│   │   ├── main.tf
+│   │   └── main.tfvars
+│   └── zones
+│       ├── northeu
+│       │   ├── main.tf     -> ../../terraform/main.tf
+│       │   ├── main.tfvars -> ../../terraform/main.tfvars
+│       │   └── zone.tfvars
+│       └── westeu
+│           ├── main.tf     -> ../../terraform/main.tf
+│           ├── main.tfvars -> ../../terraform/main.tfvars
+│           └── zone.tfvars
+├── stage
+│   ├── regions
+│   │   ├── eastus
+│   │   │   ├── main.tf     -> ../../terraform/main.tf
+│   │   │   ├── main.tfvars -> ../../terraform/main.tfvars
+│   │   │   └── zone.tfvars
+│   │   ├── northeu
+│   │   │   ├── main.tf     -> ../../terraform/main.tf
+│   │   │   ├── main.tfvars -> ../../terraform/main.tfvars
+│   │   │   └── zone.tfvars
+│   │   ├── westeu
+│   │   │   ├── main.tf     -> ../../terraform/main.tf
+│   │   │   ├── main.tfvars -> ../../terraform/main.tfvars
+│   │   │   └── zone.tfvars
+│   │   └── westus
+│   │       ├── main.tf     -> ../../terraform/main.tf
+│   │       ├── main.tfvars -> ../../terraform/main.tfvars
+│   │       └── zone.tfvars
+│   └── terraform
+│       ├── main.tf
+│       └── main.tfvars
+├── prod
+│   ├── regions
+│   │   ├── eastus
+│   │   │   ├── main.tf     -> ../../terraform/main.tf
+│   │   │   ├── main.tfvars -> ../../terraform/main.tfvars
+│   │   │   └── zone.tfvars
+│   │   └── westus
+│   │       ├── main.tf     -> ../../terraform/main.tf
+│   │       ├── main.tfvars -> ../../terraform/main.tfvars
+│   │       └── zone.tfvars
+│   └── terraform
+│       ├── main.tf
+│       └── main.tfvars
+└── promotion.yaml
+```
+
+## Promotion configuration (`promotion.yaml`)
+
+```yaml
+environments:
+    dev:
+        - zone: northeu
+          priority: 1
+        - zone: westeu
+          priority: 2
+    stage:
+        - zone: northeu
+          priority: 1
+        - zone: westeu
+          priority: 2
+        - zone: eastus
+          priority: 3
+        - zone: westus
+          priority: 3
+    prod:
+        - zone: eastus
+          priority: 2
+        - zone: westus
+          priority: 1
+```
