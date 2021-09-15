@@ -83,7 +83,7 @@ promotion:
 
 Following is executed for all files in the `main` branch
 
-![ACM-PR-pipeline](Images/ACM-PR-pipeline.png "ACM-PR-pipeline")
+<img src="Images/ACM-PR-pipeline.png" alt="ACM-PR-pipeline" height="100"/>
 
 1. Basic linting
 1. Resource validation:
@@ -94,14 +94,13 @@ Following is executed for all files in the `main` branch
 
 ### On merge
 
-![ACM-Merge-Pipeline](Images/ACM-Merge-Pipeline.png "ACM-Merge-Pipeline")
 <img src="Images/ACM-Merge-Pipeline.png" alt="ACM-Merge-Pipeline" height="100"/>
 
 1. Tag code with `dev-<version>`, ie `dev-0.1.0`
 
 ### On tag
 
-![ACM-Tag-Pipeline](Images/ACM-Tag-Pipeline.png "ACM-Tag-Pipeline")
+<img src="Images/ACM-Tag-Pipeline.png" alt="ACM-Tag-Pipeline" height="100"/>
 
 1. Request approval for execution
 1. Determine target environment from tag
