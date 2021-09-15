@@ -111,9 +111,64 @@ Following is executed for all files in the `main` branch:
 ## Directory structure for `main` branch
 
 ```
+.
+├── placement-rules
+│   ├── northeu.yaml
+│   └── westeu.yaml
+└── services
+    ├── externaldns
+    │   ├── parameters.yaml
+    │   ├── promotion.yaml
+    │   └── values
+    │       ├── dev-northeu.yaml
+    │       ├── dev-westeu.yaml
+    │       ├── prod-eastus.yaml
+    │       ├── prod-northeu.yaml
+    │       ├── prod-westeu.yaml
+    │       ├── prod-westus.yaml
+    │       ├── stage-eastus.yaml
+    │       ├── stage-northeu.yaml
+    │       ├── stage-westeu.yaml
+    │       └── stage-westus.yaml
+    └── fluent-bit
+        ├── parameters.yaml
+        ├── promotion.yaml
+        └── values
+            ├── dev-northeu.yaml
+            ├── dev-westeu.yaml
+            ├── prod-eastus.yaml
+            ├── prod-northeu.yaml
+            ├── prod-westeu.yaml
+            ├── prod-westus.yaml
+            ├── stage-eastus.yaml
+            ├── stage-northeu.yaml
+            ├── stage-westeu.yaml
+            └── stage-westus.yaml
 ```
 
 ## Directory structure for `release` branch
 
 ```
+.
+├── applications
+│   ├── externaldns.yaml
+│   └── fluent-bit.yaml
+├── placement-rules
+│   ├── northeu.yaml
+│   └── westeu.yaml
+└── subscriptions
+    ├── dev
+    │   ├── externaldns-westeu.yaml
+    │   └── fluent-bit-westeu.yaml
+    ├── lobdev
+    ├── prod
+    └── uat
+        ├── externaldns-eastus.yaml
+        ├── externaldns-northeu.yaml
+        ├── externaldns-westeu.yaml
+        ├── externaldns-westus.yaml
+        ├── fluent-bit-eastus.yaml
+        ├── fluent-bit-northeu.yaml
+        ├── fluent-bit-westeu.yaml
+        └── fluent-bit-westus.yaml
 ```
