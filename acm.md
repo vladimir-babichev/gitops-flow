@@ -81,8 +81,10 @@ promotion:
 
 ### On pull request
 
+Following is executed for all files in the `main` branch
+
 ![ACM-PR-pipeline](Images/ACM-PR-pipeline.png "ACM-PR-pipeline")
-Following is executed for all files in the `main` branch:
+
 1. Basic linting
 1. Resource validation:
     1. No duplicate resource names
@@ -93,11 +95,13 @@ Following is executed for all files in the `main` branch:
 ### On merge
 
 ![ACM-Merge-Pipeline](Images/ACM-Merge-Pipeline.png "ACM-Merge-Pipeline")
+
 1. Tag code with `dev-<version>`, ie `dev-0.1.0`
 
 ### On tag
-ACM-Tag-Pipeline
+
 ![ACM-Tag-Pipeline](Images/ACM-Tag-Pipeline.png "ACM-Tag-Pipeline")
+
 1. Request approval for execution
 1. Determine target environment from tag
 1. Process ACM applications:
