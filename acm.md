@@ -95,6 +95,7 @@ Following is executed for all files in the `main` branch
 ### On merge
 
 ![ACM-Merge-Pipeline](Images/ACM-Merge-Pipeline.png "ACM-Merge-Pipeline")
+<img src="Images/ACM-Merge-Pipeline.png" alt="ACM-Merge-Pipeline" height="100"/>
 
 1. Tag code with `dev-<version>`, ie `dev-0.1.0`
 
