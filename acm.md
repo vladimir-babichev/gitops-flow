@@ -100,7 +100,7 @@ Following is executed for all files in the `main` branch
 
 ### On tag
 
-<img src="Images/ACM-Tag-Pipeline.png" alt="ACM-Tag-Pipeline" height="100"/>
+<img src="Images/ACM-Tag-Pipeline.png" alt="ACM-Tag-Pipeline" height="400"/>
 
 1. Request approval for execution
 1. Determine target environment from tag
