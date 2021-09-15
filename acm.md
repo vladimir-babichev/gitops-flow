@@ -21,6 +21,20 @@
 #### `parameters.yaml` listing 
 
 ```yaml
+metadata:
+  name: namespace-config-ffdc
+  namespace: ffdc
+  labels:
+    acm-app: namespace-config
+    project: operating-platform
+spec:
+  channel: operating-platform-ch-helm/channel
+  name: ocp-namespace-config
+  packageFilter:
+    version: "0.2.0"
+    packageOverrides:
+      - packageName: ocp-namespace-config
+        packageAlias: namespace-config-ffdc
 ```
 
 ### `promotion.yaml`
@@ -34,6 +48,32 @@ Defines promotion strategy for the application:
 #### `promotion.yaml` listing 
 
 ```yaml
+promotion:
+  dev:
+    placementRef:
+      - name: westeu
+  lobdev:
+    placementRef:
+      - name: northeu
+        priority: 0
+      - name: westeu
+        priority: 0
+  uat:
+    placementRef:
+      - name: northeu
+        priority: 0
+      - name: westeu
+        priority: 1
+      - name: westus
+        priority: 0
+      - name: eastus
+        priority: 1
+  prod:
+    placementRef:
+      - name: westus
+        priority: 1
+      - name: eastus
+        priority: 1
 ```
 
 
@@ -105,8 +145,6 @@ Following is executed for all files in the `main` branch:
                     northeu.yaml
                     ...
             ```
-
----
 
 ## Directory structure for `main` branch
 
