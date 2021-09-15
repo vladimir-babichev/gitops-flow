@@ -11,6 +11,7 @@
 
 1. This file replicates `subscription` CRD apart of:
     1. Parameters managed by pipeline
+        1. `matadata.name` is used to generate subscription name in format `name-<env>`
         1. `metadata.labels` path will be enhanced by pipeline. `acm-app` and `project` keys will be overriten by pipeline
         1. `spec.channel` path will be ignored and managed by promotion pipeline
         1. `spec.packageOverrides.packageOverrides.spec.value` path will be ignored and sourced from respective `values.yaml` file
@@ -57,7 +58,6 @@ promotion:
       - name: northeu
         priority: 0
       - name: westeu
-        priority: 0
   uat:
     placementRef:
       - name: northeu
@@ -71,7 +71,7 @@ promotion:
   prod:
     placementRef:
       - name: westus
-        priority: 1
+        priority: 0
       - name: eastus
         priority: 1
 ```
@@ -84,6 +84,7 @@ promotion:
 Following is executed for all files in the `main` branch:
 1. Basic linting
 1. Resource validation:
+    1. No duplicate resource names
     1. Target namespaces are allowed for deployment, ie no deployment to `kube-system`
 1. Configuration validation:
     1. `placementRef`s defined in configuration are also defined under `/placement-rules`
@@ -96,13 +97,13 @@ Following is executed for all files in the `main` branch:
 
 1. Request approval for execution
 1. Determine target environment from tag
-1. Generate ACM applications:
+1. Process ACM applications:
     1. Delete existing configuration from `/applications` folder in `release` branch
     1. Generate `application` resources based on list of apps under `/subscriptions` folder in `main` branch and store them under `/applications` folder in `release` branch
-1. Generate ACM placement rules:
+1. Process ACM placement rules:
     1. Delete existing configuration from `/placement-rules` folder in `release` branch
     1. Copy placement rules as is into `/placement-rule` folder
-1. Generate ACM subscriptions:
+1. Process ACM subscriptions:
     1. Delete existing configuration files `/subscriptions/<env>/*-<zone>.yaml` in `release` branch based on `promotion.yaml`
     1. Generate `subscription` resources based on configuration defined under `/services/<app-name>` using value files according to `promotion.yaml` and store them under `/subscriptions/<env>/` folder
 1. Commit to changes to `release` branch
