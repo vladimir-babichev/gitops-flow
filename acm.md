@@ -164,10 +164,10 @@ Following is executed for all files in the `main` branch:
     │       ├── prod-northeu.yaml
     │       ├── prod-westeu.yaml
     │       ├── prod-westus.yaml
-    │       ├── stage-eastus.yaml
-    │       ├── stage-northeu.yaml
-    │       ├── stage-westeu.yaml
-    │       └── stage-westus.yaml
+    │       ├── uat-eastus.yaml
+    │       ├── uat-northeu.yaml
+    │       ├── uat-westeu.yaml
+    │       └── uat-westus.yaml
     └── fluent-bit
         ├── parameters.yaml
         ├── promotion.yaml
@@ -178,10 +178,10 @@ Following is executed for all files in the `main` branch:
             ├── prod-northeu.yaml
             ├── prod-westeu.yaml
             ├── prod-westus.yaml
-            ├── stage-eastus.yaml
-            ├── stage-northeu.yaml
-            ├── stage-westeu.yaml
-            └── stage-westus.yaml
+            ├── uat-eastus.yaml
+            ├── uat-northeu.yaml
+            ├── uat-westeu.yaml
+            └── uat-westus.yaml
 ```
 
 ## Directory structure for `release` branch
