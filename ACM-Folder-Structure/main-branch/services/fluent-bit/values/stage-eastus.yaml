@@ -1,0 +1,5 @@
+  namespace: ffdc
+  rbac:
+    edit:
+      enabled: true
+      groupName: SG_AZR-FO-FFDC-Ops

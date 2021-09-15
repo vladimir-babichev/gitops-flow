@@ -1,0 +1,14 @@
+metadata:
+  name: namespace-config-ffdc
+  namespace: ffdc
+  labels:
+    acm-app: namespace-config
+    project: operating-platform
+spec:
+  channel: operating-platform-ch-helm/channel
+  name: ocp-namespace-config
+  packageFilter:
+    version: "0.2.0"
+    packageOverrides:
+      - packageName: ocp-namespace-config
+        packageAlias: namespace-config-ffdc
