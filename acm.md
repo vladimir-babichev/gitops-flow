@@ -63,7 +63,7 @@ Following is executed for all files in the `main` branch:
     1. Delete existing configuration from `/placement-rules` folder in `release` branch
     1. Copy placement rules as is into `/placement-rule` folder
 1. Generate ACM subscriptions:
-    1. Delete existing configuration from `/subscriptions/<env>/<zone>` folder in `release` branch based on `promotion.yaml`
+    1. Delete existing configuration files `/subscriptions/<env>/*-<zone>.yaml` in `release` branch based on `promotion.yaml`
     1. Generate `subscription` resources based on configuration defined under `/services/<app-name>` using value files according to `promotion.yaml` and store them under `/subscriptions/<env>/` folder
 1. Commit to changes to `release` branch
 1. Detect applications that changed since last release to env:
@@ -86,9 +86,25 @@ Following is executed for all files in the `main` branch:
 
 ## Open issues
 
-1. How to delete application/placements? Current problem if we delete in dev, it will also remove `applicaiton`s and `placementRef`s referenced in prod. Possible solution:
-    1. Do resource addition in dev
-    1. Do resource deletion and addition in prod
+1. How to delete application/placements? Current problem if we delete in dev, it will also remove `applicaiton`s and `placementRef`s referenced in prod. 
+    1. Possible solution:
+        1. Store applications and placement rules in environment specific folders, ie:
+            ```
+            /application/
+                /dev
+                    fluent-bit.yaml
+                    ...
+                /lobdev
+                    fluent-bit.yaml
+                    ...
+            /placement-rules/
+                /dev
+                    westeu.yaml
+                    ...
+                /lobdev
+                    northeu.yaml
+                    ...
+            ```
 
 ---
 
